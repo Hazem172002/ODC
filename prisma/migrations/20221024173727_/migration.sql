@@ -1,0 +1,14 @@
+-- CreateTable
+CREATE TABLE `Tickets` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `user_id` INTEGER NOT NULL,
+    `film_name` VARCHAR(191) NOT NULL,
+    `Date` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `price` DECIMAL(65, 30) NOT NULL DEFAULT 150,
+    `time` INTEGER NOT NULL DEFAULT 0,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `Tickets` ADD CONSTRAINT `Tickets_user_id_fkey` FOREIGN KEY (`user_id`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

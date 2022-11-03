@@ -1,0 +1,157 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  hash  String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model nowPlaying {
+  id                Int      @id @default(autoincrement())
+  Ids               Int?
+  adult             Boolean?
+  backdrop_path     String?
+  original_language String?
+  original_title    String?
+  overview          String?
+  popularity        Decimal?
+  poster_path       String?
+  release_date      String?
+  title             String?
+  video             Boolean?
+  vote_average      Decimal?
+  vote_count        Decimal?
+}
+
+model upComing {
+  id                Int      @id @default(autoincrement())
+  Ids               Int?
+  adult             Boolean?
+  backdrop_path     String?
+  original_language String?
+  original_title    String?
+  overview          String?
+  popularity        Decimal?
+  poster_path       String?
+  release_date      String?
+  title             String?
+  video             Boolean?
+  vote_average      Decimal?
+  vote_count        Decimal?
+}
+
+model Schedule {
+  id                Int      @id @default(autoincrement())
+  time              Int
+  Ids               Int?
+  adult             Boolean?
+  backdrop_path     String?
+  original_language String?
+  original_title    String?
+  overview          String?
+  popularity        Decimal?
+  poster_path       String?
+  release_date      String?
+  title             String?
+  video             Boolean?
+  vote_average      Decimal?
+  vote_count        Decimal?
+}
+
+model HallA {
+  id                Int      @id @default(autoincrement())
+  tickets           Int      @default(50)
+  time              Int
+  Ids               Int?
+  adult             Boolean?
+  backdrop_path     String?
+  original_language String?
+  original_title    String?
+  overview          String?
+  popularity        Decimal?
+  poster_path       String?
+  release_date      String?
+  title             String?
+  video             Boolean?
+  vote_average      Decimal?
+  vote_count        Decimal?
+}
+
+model HallB {
+  id                Int      @id @default(autoincrement())
+  tickets           Int      @default(50)
+  time              Int
+  Ids               Int?
+  adult             Boolean?
+  backdrop_path     String?
+  original_language String?
+  original_title    String?
+  overview          String?
+  popularity        Decimal?
+  poster_path       String?
+  release_date      String?
+  title             String?
+  video             Boolean?
+  vote_average      Decimal?
+  vote_count        Decimal?
+}
+
+model HallC {
+  id                Int      @id @default(autoincrement())
+  tickets           Int      @default(50)
+  time              Int
+  Ids               Int?
+  adult             Boolean?
+  backdrop_path     String?
+  original_language String?
+  original_title    String?
+  overview          String?
+  popularity        Decimal?
+  poster_path       String?
+  release_date      String?
+  title             String?
+  video             Boolean?
+  vote_average      Decimal?
+  vote_count        Decimal?
+}
+
+model seatsA {
+  id      Int     @id @default(autoincrement())
+  hall_id Int?
+  seat    String?
+}
+
+model seatsB {
+  id      Int     @id @default(autoincrement())
+  hall_id Int?
+  seat    String?
+}
+
+model seatsC {
+  id      Int     @id @default(autoincrement())
+  hall_id Int?
+  seat    String?
+}
+
+model Tickets {
+  id        Int      @id @default(autoincrement())
+  user_id   Int
+  film_name String
+  Date      DateTime @default(now())
+  price     Decimal  @default(150)
+  time      Int      @default(0)
+}
